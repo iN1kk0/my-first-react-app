@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/my-first-react-app/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/my-first-react-app/static/js/main.8e00ca5e.chunk.js",
+    "main.js.map": "/my-first-react-app/static/js/main.8e00ca5e.chunk.js.map",
+    "runtime-main.js": "/my-first-react-app/static/js/runtime-main.79f54214.js",
+    "runtime-main.js.map": "/my-first-react-app/static/js/runtime-main.79f54214.js.map",
+    "static/js/2.5129af81.chunk.js": "/my-first-react-app/static/js/2.5129af81.chunk.js",
+    "static/js/2.5129af81.chunk.js.map": "/my-first-react-app/static/js/2.5129af81.chunk.js.map",
+    "static/js/3.ad2142a0.chunk.js": "/my-first-react-app/static/js/3.ad2142a0.chunk.js",
+    "static/js/3.ad2142a0.chunk.js.map": "/my-first-react-app/static/js/3.ad2142a0.chunk.js.map",
+    "index.html": "/my-first-react-app/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/my-first-react-app/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.5129af81.chunk.js.LICENSE.txt": "/my-first-react-app/static/js/2.5129af81.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/my-first-react-app/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.79f54214.js",
+    "static/js/2.5129af81.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.8e00ca5e.chunk.js"
+  ]
+}
