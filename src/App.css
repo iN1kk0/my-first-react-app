@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+/*sticky footer*/
+
+html, 
+body {   
+  height: 100%; 
+} 
+
+body { 
+  display: flex;   
+  flex-direction: column; 
+}
+
+.App, #root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mainContent {
+  flex: 1 0 auto;
+  padding: 0 !important;
+}
+
+.stickyFooter {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: #3f51b5;
+  color: white;
+  padding: auto;
+  padding: 12px 0;
+}
