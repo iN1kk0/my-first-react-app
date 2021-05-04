@@ -68,3 +68,23 @@ body {
   padding: auto;
   padding: 12px 0;
 }
+
+/**/
+
+.mainForm {
+  padding: 12px;
+}
+
+.submitButton {
+  margin: 12px !important;
+}
+
+.cardMain {
+  max-width: 275px;
+  display: inline-block;
+  margin: 12px;
+}
+
+.cardBody {
+    text-align: 'left';
+}
