@@ -22,10 +22,12 @@ class Form extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({
-            value: '',
-            items: [...this.state.items, this.state.value]
-        });
+        if (this.state.value) {
+            this.setState({
+                value: '',
+                items: [...this.state.items, this.state.value]
+            });
+        }
     }
 
     render() {
