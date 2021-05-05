@@ -9,22 +9,42 @@ class Form extends React.Component {
         super(props)
         this.state = {
             value: '',
-            items: []
+            items: ['hello', 'test']
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleChange(event) {
         this.setState({value: event.target.value})
     }
 
+    handleDelete(index) {
+        const {items} = this.state
+
+        this.setState({
+            items: items.filter((item, i) => {
+                return i !== index
+            })
+        })
+    }
+
+    /*handleDelete = (index) => {
+        const {items} = this.state
+
+        this.setState({
+            items: items.filter((item, i) => {
+                return i !== index
+            })
+        })
+    }*/
+
     handleSubmit(event) {
         event.preventDefault();
         if (this.state.value) {
             this.setState({
-                value: '',
                 items: [...this.state.items, this.state.value]
             });
         }
@@ -43,7 +63,7 @@ class Form extends React.Component {
                         endIcon={<Icon>send</Icon>}
                     >Send</Button>
                 </form>                
-                <Notes items={this.state.items} />
+                <Notes handleDelete={this.handleDelete} items={this.state.items} />
             </div>
         )
     }

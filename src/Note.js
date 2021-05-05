@@ -9,14 +9,15 @@ class Note extends React.Component {
     render(){
         return (
             <Card>
-            <CardContent>
-                <Typography className="cardBody" component="p">
-                {this.props.item}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Delete</Button>
-            </CardActions>
+                <CardContent>
+                    <Typography className="cardBody" component="p">
+                    {this.props.item}
+                    
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => this.props.handleDelete(this.props.id)} size="small">Delete</Button>
+                </CardActions>
             </Card>
         );
     }
