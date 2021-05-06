@@ -39,17 +39,18 @@
 
 /*sticky footer*/
 
-html, 
-body {   
-  height: 100%; 
-} 
-
-body { 
-  display: flex;   
-  flex-direction: column; 
+html,
+body {
+  height: 100%;
 }
 
-.App, #root {
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.App,
+#root {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -83,8 +84,17 @@ body {
   max-width: 275px;
   display: inline-block;
   margin: 12px;
+  overflow-wrap: break-word;
 }
 
 .cardBody {
-    text-align: 'left';
+  text-align: "left";
+}
+
+.deleteButton {  
+  margin: 0 auto !important;
+}
+
+.MuiCardActions-root.MuiCardActions-spacing{
+  padding-top: 0;
 }
