@@ -54,7 +54,8 @@ class SearchField extends React.Component {
 
   handleSearch(e) {
     let text = e.target.value.trim();
-    this.props.filter(text);
+    console.log(text)
+    //this.props.filter(text);
   }
 
   render() {
