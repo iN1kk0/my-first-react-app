@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+const Header = (props) => {
   const classes = useStyles();
 
   return (
@@ -33,7 +33,7 @@ function Header() {
             My First React App | Notes
           </Typography>
           <div className={classes.between} />
-          <SearchField />
+          <SearchField handleSearch={props.handleSearch} />
         </Toolbar>
       </AppBar>
     </Container>

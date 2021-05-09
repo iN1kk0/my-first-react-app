@@ -45,39 +45,25 @@ const styles = (theme) => ({
   },
 });
 
-class SearchField extends React.Component {
-  constructor(props) {
-    super(props);
+const SearchField = (props) => {
+  const { classes } = props;
 
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  handleSearch(e) {
-    let text = e.target.value.trim();
-    console.log(text)
-    //this.props.filter(text);
-  }
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ "aria-label": "search" }}
-          onChange={this.handleSearch}
-        />
+  return (
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
       </div>
-    );
-  }
-}
+      <InputBase
+        placeholder="Search…"
+        classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput,
+        }}
+        inputProps={{ "aria-label": "search" }}
+        onChange={props.handleSearch}
+      />
+    </div>
+  );
+};
 
 export default withStyles(styles)(SearchField);
