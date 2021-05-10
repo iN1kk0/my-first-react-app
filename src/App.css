@@ -91,10 +91,14 @@ body {
   text-align: "left";
 }
 
-.deleteButton {  
+.deleteButton {
   margin: 0 auto !important;
 }
 
-.MuiCardActions-root.MuiCardActions-spacing{
+.MuiCardActions-root.MuiCardActions-spacing {
   padding-top: 0;
+}
+
+.MuiPagination-ul {
+  display: inline-flex !important;
 }

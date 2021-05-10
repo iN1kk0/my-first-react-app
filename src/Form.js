@@ -2,7 +2,6 @@ import React from "react";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-import Notes from "./Notes";
 
 const Form = (props) => {
   return (
@@ -29,7 +28,6 @@ const Form = (props) => {
           Send
         </Button>
       </form>
-      <Notes handleDelete={props.handleDelete} items={props.items} />
     </>
   );
 };

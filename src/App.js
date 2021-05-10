@@ -1,9 +1,11 @@
 import "./App.css";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Form from "./Form";
 import { Container } from "@material-ui/core";
-import React from "react";
+import Notes from "./Notes";
+import NotesPagination from "./NotesPagination";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,9 +15,15 @@ class App extends React.Component {
       value: "",
       items: [
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         "Hello, World",
+        "Learn JS",
         "Learn React",
+        "Test Pagination",
       ],
+      currentPage: 1,
+      itemsPerPage: 6,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,6 +31,7 @@ class App extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.filterNotes = this.filterNotes.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   handleChange(event) {
@@ -50,7 +59,6 @@ class App extends React.Component {
 
   handleSearch(e) {
     let text = e.target.value.trim();
-    //console.log(text);
     this.filterNotes(text);
   }
 
@@ -61,7 +69,18 @@ class App extends React.Component {
     this.setState({ items: filteredNotes });
   }
 
+  handlePageClick(event, page) {
+    this.setState({
+      currentPage: Number(page),
+    });
+  }
+
   render() {
+    const { items, currentPage, itemsPerPage } = this.state;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
     return (
       <div className="App">
         <Container className="mainContent" maxWidth="false">
@@ -70,9 +89,13 @@ class App extends React.Component {
             <Form
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
-              handleDelete={this.handleDelete}
               value={this.state.value}
+            />
+            <Notes handleDelete={this.handleDelete} items={currentItems} />
+            <NotesPagination
               items={this.state.items}
+              handlePageClick={this.handlePageClick}
+              itemsPerPage={this.state.itemsPerPage}
             />
           </Container>
         </Container>
@@ -81,19 +104,5 @@ class App extends React.Component {
     );
   }
 }
-
-/*function App() {
-  return (
-    <div className="App">
-      <Container className="mainContent" maxWidth="false">
-        <Header />
-        <Container maxWidth="md">
-          <Form />
-        </Container>
-      </Container>
-      <Footer />
-    </div>
-  );
-}*/
 
 export default App;
