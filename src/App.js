@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import Form from "./Form";
 import { Container } from "@material-ui/core";
-import Notes from "./Notes";
-import NotesPagination from "./NotesPagination";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Form from "./components/Form";
+import Notes from "./components/Notes";
+import NotesPagination from "./components/NotesPagination";
 
 class App extends React.Component {
   constructor(props) {
