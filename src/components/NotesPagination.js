@@ -13,19 +13,10 @@ const useStyles = makeStyles((theme) => ({
 const NotesPagination = (props) => {
   const classes = useStyles();
 
-  const pageNum = [];
-  for (
-    let i = 1;
-    i <= Math.ceil(props.items.length / props.itemsPerPage);
-    i++
-  ) {
-    pageNum.push(i);
-  }
-
   return (
     <div className={classes.root}>
       <Pagination
-        count={pageNum.length}
+        count={Math.ceil(props.items.length / props.itemsPerPage)}
         onChange={props.handlePageClick}
         color="primary"
         hideNextButton="true"

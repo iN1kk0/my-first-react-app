@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,102 +7,74 @@ import Form from "./components/Form";
 import Notes from "./components/Notes";
 import NotesPagination from "./components/NotesPagination";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+export default function App() {
+  const [value, setValue] = useState();
+  const [items, setItems] = useState([
+    "Hello, World",
+    "Learn JS",
+    "Learn React",
+    "Test Pagination",
+  ]);
+  const [filteredNotes, setFilteredNotes] = useState([]);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
-    this.state = {
-      value: "",
-      items: [
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        "Hello, World",
-        "Learn JS",
-        "Learn React",
-        "Test Pagination",
-      ],
-      currentPage: 1,
-      itemsPerPage: 6,
-    };
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.filterNotes = this.filterNotes.bind(this);
-    this.handlePageClick = this.handlePageClick.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.value) {
-      this.setState({
-        items: [...this.state.items, this.state.value],
-      });
+    if (value) {
+      setItems([...items, value]);
     }
-  }
+  };
 
-  handleDelete(index) {
-    const { items } = this.state;
+  const handleDelete = (index) => {
+    const newItems = items.filter((items, i) => i !== index);
+    setItems(newItems);
+  };
 
-    this.setState({
-      items: items.filter((item, i) => {
-        return i !== index;
-      }),
-    });
-  }
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
-  handleSearch(e) {
-    let text = e.target.value.trim();
-    this.filterNotes(text);
-  }
-
-  filterNotes(text) {
-    let filteredNotes = this.state.items.filter(function (item) {
-      return item.toLowerCase().search(text.toLowerCase()) !== -1;
-    });
-    this.setState({ items: filteredNotes });
-  }
-
-  handlePageClick(event, page) {
-    this.setState({
-      currentPage: Number(page),
-    });
-  }
-
-  render() {
-    const { items, currentPage, itemsPerPage } = this.state;
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-    return (
-      <div className="App">
-        <Container className="mainContent" maxWidth="false">
-          <Header handleSearch={this.handleSearch} />
-          <Container maxWidth="md">
-            <Form
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              value={this.state.value}
-            />
-            <Notes handleDelete={this.handleDelete} items={currentItems} />
-            <NotesPagination
-              items={this.state.items}
-              handlePageClick={this.handlePageClick}
-              itemsPerPage={this.state.itemsPerPage}
-            />
-          </Container>
-        </Container>
-        <Footer />
-      </div>
+  useEffect(() => {
+    setFilteredNotes(
+      items.filter((items) =>
+        items.toLowerCase().includes(search.toLowerCase())
+      )
     );
-  }
-}
+  }, [search, items]);
 
-export default App;
+  const handlePageClick = (event, page) => {
+    setCurrentPage(Number(page));
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredNotes.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <div className="App">
+      <Container className="mainContent" maxWidth="false">
+        <Header handleSearch={handleSearch} />
+        <Container maxWidth="md">
+          <Form
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            value={value}
+          />
+          <Notes handleDelete={handleDelete} items={currentItems} />
+          <NotesPagination
+            items={filteredNotes}
+            handlePageClick={handlePageClick}
+            itemsPerPage={itemsPerPage}
+          />
+        </Container>
+      </Container>
+      <Footer />
+    </div>
+  );
+}
