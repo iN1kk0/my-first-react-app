@@ -2,13 +2,25 @@ import React from "react";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  submitButton: {
+    margin: "12px",
+  },
+  mainForm: {
+    margin: "12px",
+  },
+}));
 
 const Form = (props) => {
+  const classes = useStyles();
+
   return (
     <>
       <form
         onSubmit={props.handleSubmit}
-        className="mainForm"
+        className={classes.mainForm}
         noValidate
         autoComplete="off"
       >
@@ -21,7 +33,7 @@ const Form = (props) => {
         <Button
           variant="contained"
           color="primary"
-          className="submitButton"
+          className={classes.submitButton}
           type="submit"
           endIcon={<Icon>send</Icon>}
         >

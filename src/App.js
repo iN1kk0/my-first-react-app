@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Notes from "./components/Notes";
 import NotesPagination from "./components/NotesPagination";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function App() {
   const [value, setValue] = useState();
@@ -56,9 +57,18 @@ export default function App() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredNotes.slice(indexOfFirstItem, indexOfLastItem);
 
+  const useStyles = makeStyles(() => ({
+    mainContent: {
+      flex: "1 0 auto",
+      padding: "0",
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
     <div className="App">
-      <Container className="mainContent" maxWidth="false">
+      <Container className={classes.mainContent} maxWidth="false">
         <Header handleSearch={handleSearch} />
         <Container maxWidth="md">
           <Form

@@ -1,9 +1,9 @@
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import { withStyles, fade } from "@material-ui/core/styles";
+import { makeStyles, fade } from "@material-ui/core/styles";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -43,10 +43,10 @@ const styles = (theme) => ({
       },
     },
   },
-});
+}));
 
 const SearchField = (props) => {
-  const { classes } = props;
+  const classes = useStyles();
 
   return (
     <div className={classes.search}>
@@ -66,4 +66,4 @@ const SearchField = (props) => {
   );
 };
 
-export default withStyles(styles)(SearchField);
+export default SearchField;

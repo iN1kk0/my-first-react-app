@@ -5,26 +5,40 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Note = (props) => (
-  <Card>
-    <CardContent>
-      <Typography className="cardBody" component="p">
-        {props.item}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button
-        className="deleteButton"
-        onClick={() => props.handleDelete(props.index)}
-        size="small"
-        variant="outlined"
-        startIcon={<DeleteIcon />}
-      >
-        Delete
-      </Button>
-    </CardActions>
-  </Card>
-);
+const useStyles = makeStyles(() => ({
+  cardBody: {
+    textAlign: "left",
+  },
+  deleteButton: {
+    margin: "0 auto",
+  },
+}));
+
+const Note = (props) => {
+  const classes = useStyles();
+
+  return (
+    <Card>
+      <CardContent>
+        <Typography className={classes.cardBody} component="p">
+          {props.item}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button
+          className={classes.deleteButton}
+          onClick={() => props.handleDelete(props.index)}
+          size="small"
+          variant="outlined"
+          startIcon={<DeleteIcon />}
+        >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
 
 export default Note;

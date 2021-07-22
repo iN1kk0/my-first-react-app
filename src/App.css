@@ -56,11 +56,6 @@ body {
   height: 100%;
 }
 
-.mainContent {
-  flex: 1 0 auto;
-  padding: 0 !important;
-}
-
 .stickyFooter {
   flex-shrink: 0;
   text-align: center;
@@ -70,35 +65,6 @@ body {
   padding: 12px 0;
 }
 
-/**/
-
-.mainForm {
-  padding: 12px;
-}
-
-.submitButton {
-  margin: 12px !important;
-}
-
-.cardMain {
-  max-width: 275px;
-  display: inline-block;
-  margin: 12px;
-  overflow-wrap: break-word;
-}
-
-.cardBody {
-  text-align: "left";
-}
-
-.deleteButton {
-  margin: 0 auto !important;
-}
-
 .MuiCardActions-root.MuiCardActions-spacing {
   padding-top: 0;
-}
-
-.MuiPagination-ul {
-  display: inline-flex !important;
 }
