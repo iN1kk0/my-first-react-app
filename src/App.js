@@ -30,6 +30,7 @@ export default function App() {
     if (value) {
       setItems([...items, value]);
     }
+    setValue('');
   };
 
   const handleDelete = (index) => {
